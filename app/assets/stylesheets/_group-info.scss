@@ -1,0 +1,16 @@
+.group-info{
+  height: 100%;
+  padding-top: 35px;
+  padding-left: 40px;
+  &__name{
+    font-size: 20px;
+    text-align: 20px;
+    color: #333333;
+    margin-bottom: 15px;
+  }
+  &__member{
+    font-size: 12px;
+    text-align: 12px;
+    color: #999999;
+  }
+}

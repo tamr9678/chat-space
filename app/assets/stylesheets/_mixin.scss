@@ -1,0 +1,19 @@
+@mixin display-space-between(){
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin message-form-position(){
+  line-height: 50px;
+  text-align: center;
+}
+
+@mixin make-btn($height,$padding-side,$color){
+  display: block;
+  text-decoration: none;
+  height: $height;
+  color: $color;
+  padding: 0 $padding-side;
+  border: 1px solid $btn-color;
+}

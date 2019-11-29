@@ -1,0 +1,21 @@
+.input-message{
+  height: 50px;
+  width: calc(100vw - 300px - 95px);
+  background-color: white;
+  position: relative;
+  &__text{
+    font-size: 20px;
+    color: #999999;
+    @include message-form-position();
+    position: absolute;
+    left: 10px;
+  }
+  &__image{
+    @include message-form-position();
+    position: absolute;
+    right: 10px;
+    &--invisible{
+      display: none;
+    }
+  }
+}

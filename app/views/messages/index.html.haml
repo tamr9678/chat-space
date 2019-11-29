@@ -1,0 +1,71 @@
+.side-bar
+  .side-bar__user-name
+    .top-items
+      .top-items__name
+        #p nakada
+      =link_to "#", class: "top-items__icon" do
+        = icon('fas', 'cog')
+      =link_to "#", class: "top-items__icon--padding" do
+        = icon('far', 'edit')
+  .side-bar__group-list
+    .group-box
+      .group-box__name
+        #p techcamp
+      .group-box__latest-message
+        #p no message
+    .group-box
+      .group-box__name
+        #p techcamp2
+      .group-box__latest-message
+        #p no message2
+.chat-main
+  .chat-main__group-contents
+    .group-info
+      .group-info__name
+        #p techcamp
+      .group-info__member
+        #p Member : nakada
+    .group-edit
+      =link_to "#", class: "group-edit__edit-btn" do
+        Edit
+  .chat-main__message-list
+    -# message1
+    .message
+      .message-info
+        .message-info__name
+          #p nakada
+        .message-info__date
+          #p 2022/01/01
+      .contents__body
+        #p hello!!
+    -# message2
+    .message
+      .message-info
+        .message-info__name
+          #p nakada-kun
+        .message-info__date
+          #p 2022/01/02
+      .contents__body
+        #p koncha!!
+    -# message3
+    .message
+      .message-info
+        .message-info__name
+          #p nakada-san
+        .message-info__date
+          #p 2022/01/03
+      .contents__body
+        #p hi!!
+    
+  .chat-main__message-form
+    .form-contents
+      .input-message
+        .input-message__text
+          #p type a message
+        %label{class: "input-message__image"}
+          = icon('far','image')
+          %input{type: "file", class: "input-message__image--invisible"}
+      =link_to "#", class: "form-contents__send-btn", method: :create do
+        Send
+     
+

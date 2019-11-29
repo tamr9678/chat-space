@@ -1,0 +1,21 @@
+.top-items{
+  width: 260px;
+  height: 20px;
+  &__name {
+    font-size: 16px;
+    line-height: 20px;
+    color: white;
+    font-weight: bold;
+    float: left;
+  }
+  &__icon {
+    float: right;
+    color: $white;
+    &--padding {
+      float: right;
+      padding-right: 5px;
+      color: $white;
+    }
+  }
+  
+}
