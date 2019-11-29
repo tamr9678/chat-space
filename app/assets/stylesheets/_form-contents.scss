@@ -1,0 +1,13 @@
+.form-contents{
+  height: 100%;
+  width: 100%;
+  @include display-space-between();
+  padding-left: 40px;
+  padding-right: 40px;
+  &__send-btn{
+    @include make-btn(50px,30px,white);
+    @include message-form-position();
+    background-color: $btn-color;
+    margin-left: 15px;
+  }
+}

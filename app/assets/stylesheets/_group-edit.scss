@@ -1,0 +1,8 @@
+.group-edit{
+  &__edit-btn{
+    @include make-btn(40px,20px,$btn-color);
+    margin: 28px 40px 28px 0; 
+    text-align: center;
+    line-height: 40px;
+  }
+}
