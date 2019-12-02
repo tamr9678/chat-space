@@ -5,16 +5,15 @@
         =current_user.name
       =link_to edit_user_path(current_user), class: "top-items__icon" do
         = icon('fas', 'cog')
-      =link_to "#", class: "top-items__icon--padding" do
+      =link_to new_group_path, class: "top-items__icon--padding" do
         = icon('far', 'edit')
   .side-bar__group-list
-    .group-box
-      .group-box__name
-        #p techcamp
-      .group-box__latest-message
-        #p no message
-    .group-box
-      .group-box__name
-        #p techcamp2
-      .group-box__latest-message
-        #p no message2
+    - current_user.groups.each do |group|
+      .group-box
+        = link_to "#", class: "group-box--no-decoration" do  
+          .group-box__name  
+            = group.name
+          .group-box__latest-message
+            latest message
+    
+
