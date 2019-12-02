@@ -8,9 +8,12 @@
       =link_to new_group_path, class: "top-items__icon--padding" do
         = icon('far', 'edit')
   .side-bar__group-list
-    .group-box
-      .group-box__name
-        #p techcamp
-      .group-box__latest-message
-        #p no message
+    - current_user.groups.each do |group|
+      .group-box
+        = link_to "#", class: "group-box--no-decoration" do  
+          .group-box__name  
+            = group.name
+          .group-box__latest-message
+            latest message
+    
 
