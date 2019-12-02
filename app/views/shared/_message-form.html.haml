@@ -1,0 +1,8 @@
+.message-form
+  .input-message
+    .input-message__text
+      #p type a message
+    %label{class: "input-message__image"}
+      = icon('far','image')
+      %input{type: "file", class: "input-message__image--invisible"}
+= f.submit 'Send', class: "message-form__send-btn"

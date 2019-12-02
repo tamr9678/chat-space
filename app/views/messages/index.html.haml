@@ -4,50 +4,22 @@
   .chat-main__group-contents
     .group-info
       .group-info__name
-        #p techcamp
-      .group-info__member
-        #p Member : nakada
+        = @group.name
+      .group-info__member 
+        - @members.each do |member|
+          = member.name
     .group-edit
       =link_to "#", class: "group-edit__edit-btn" do
         Edit
   .chat-main__message-list
-    -# message1
-    .message
-      .message-info
-        .message-info__name
-          #p nakada
-        .message-info__date
-          #p 2022/01/01
-      .contents__body
-        #p hello!!
-    -# message2
-    .message
-      .message-info
-        .message-info__name
-          #p nakada-kun
-        .message-info__date
-          #p 2022/01/02
-      .contents__body
-        #p koncha!!
-    -# message3
-    .message
-      .message-info
-        .message-info__name
-          #p nakada-san
-        .message-info__date
-          #p 2022/01/03
-      .contents__body
-        #p hi!!
-    
+    = render @messages
+   
   .chat-main__message-form
-    .form-contents
-      .input-message
-        .input-message__text
-          #p type a message
-        %label{class: "input-message__image"}
-          = icon('far','image')
-          %input{type: "file", class: "input-message__image--invisible"}
-      =link_to "#", class: "form-contents__send-btn", method: :create do
-        Send
-     
-
+    =form_for [@group, @message] do |f|  
+      .form-contents  
+        .input-message
+          =f.text_field :body, class: 'input-message__text', placeholder: 'type a message'
+          =f.label :image, class: "input-message__image" do
+            = icon('far','image')
+            =f.file_field :image, class: "input-message__image--invisible"
+        = f.submit 'Send', class: "form-contents__send-btn"

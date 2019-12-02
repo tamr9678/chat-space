@@ -4,11 +4,14 @@
   background-color: white;
   position: relative;
   &__text{
+    height: 100%;
+    width: 100%;
     font-size: 20px;
     color: #999999;
     @include message-form-position();
     position: absolute;
-    left: 10px;
+    text-align: left;
+    padding-left: 10px;
   }
   &__image{
     @include message-form-position();
