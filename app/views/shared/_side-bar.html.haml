@@ -5,7 +5,7 @@
         =current_user.name
       =link_to edit_user_path(current_user), class: "top-items__icon" do
         = icon('fas', 'cog')
-      =link_to "#", class: "top-items__icon--padding" do
+      =link_to new_group_path, class: "top-items__icon--padding" do
         = icon('far', 'edit')
   .side-bar__group-list
     .group-box
