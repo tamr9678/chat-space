@@ -1,23 +1,5 @@
-.side-bar
-  .side-bar__user-name
-    .top-items
-      .top-items__name
-        #p nakada
-      =link_to "#", class: "top-items__icon" do
-        = icon('fas', 'cog')
-      =link_to "#", class: "top-items__icon--padding" do
-        = icon('far', 'edit')
-  .side-bar__group-list
-    .group-box
-      .group-box__name
-        #p techcamp
-      .group-box__latest-message
-        #p no message
-    .group-box
-      .group-box__name
-        #p techcamp2
-      .group-box__latest-message
-        #p no message2
+=render 'shared/side-bar'
+
 .chat-main
   .chat-main__group-contents
     .group-info

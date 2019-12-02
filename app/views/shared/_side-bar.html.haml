@@ -1,0 +1,20 @@
+.side-bar
+  .side-bar__user-name
+    .top-items
+      %h3.top-items__name
+        =current_user.name
+      =link_to edit_user_path(current_user), class: "top-items__icon" do
+        = icon('fas', 'cog')
+      =link_to "#", class: "top-items__icon--padding" do
+        = icon('far', 'edit')
+  .side-bar__group-list
+    .group-box
+      .group-box__name
+        #p techcamp
+      .group-box__latest-message
+        #p no message
+    .group-box
+      .group-box__name
+        #p techcamp2
+      .group-box__latest-message
+        #p no message2

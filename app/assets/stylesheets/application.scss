@@ -3,15 +3,17 @@
 @import "./font-awesome";
 @import "./variables";
 @import "./mixin";
-@import "messages";
 @import "./side-bar";
 @import "./chat-main";
 @import "./top-items";
 @import "./group-box";
 @import "./group-info";
 @import "./group-edit";
-@import "./message";
 @import "./message-info";
 @import "./form-contents";
 @import "./input-message";
-
+@import "./user";
+@import "./message";
+@import "messages";
+@import "../config/colors";
+@import "modules/flash";
