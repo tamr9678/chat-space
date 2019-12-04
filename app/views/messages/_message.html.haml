@@ -3,6 +3,10 @@
     .message-info__name 
       = message.user.name
     .message-info__date
-      = message.created_at.strftime("%Y/%m/%d %H:%M")
+      = message.created_at.strftime("%Y/%m/%d(%a) %H:%M")
   .contents__body
-    = message.body
+    -# = message.body
+    - if message.body.present?
+      %p.message_text
+        = message.body
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
