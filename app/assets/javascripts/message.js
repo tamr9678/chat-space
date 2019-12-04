@@ -50,7 +50,8 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.chat-main__message-list').append(html);
-      $('.textbox').val('');
+      $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
+      $('.chat-main__message-list').val('');
       $('.form__submit').prop('disabled', false);
     })
     .fail(function(){
