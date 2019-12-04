@@ -1,48 +1,44 @@
 $(function(){
   function buildHTML(message){
+    console.log(message != null);
     // 「もしメッセージに画像が含まれていたら」という条件式
-    if (message.image) {
-      var html = `
-                  <div class= "message">
-                    <div class = message-info>
-                      <div class = message-info_name>
-                        <%= message.user.name %>
+    if (message.image.present) {
+      var html = `<div class= "message">
+                    <div class = "message-info">
+                      <div class = "message-info__name">
+                        ${message.user_name} 
                       </div>
-                      <div class = mesage-info__date>
-                        <%= message.created_at.strftime("%Y/%m/%d %H:%M")
+                      <div class = "mesage-info__date">
+                        ${message.created_at}.strftime("%Y/%m/%d %H:%M")
                       </div>
                     </div>
                     <div class = "contents__body">
-                      <%= message.body %>
+                      <p class = "message_text"> ${message.body} </p>
+                      <img src = ${message.image.url} class = "message__image" />
                     </div>
-                    <div clas = "lower-message__image">
-                      <%= image_tag message.image.url %>
-                    </div>
-                  </div>  
-                  `
+                  </div>`
     } else {
-      var html =  ` 
-                    <div class= "message">
-                      <div class = message-info>
-                        <div class = message-info_name>
-                          <%= message.user.name %>
-                        </div>
-                        <div class = mesage-info__date>
-                          <%= message.created_at.strftime("%Y/%m/%d %H:%M")
-                        </div>
+      var html = `<div class= "message">
+                    <div class = "message-info">
+                      <div class = "message-info_name">
+                        ${message.user_name} 
                       </div>
-                      <div class = "contents__body">
-                        <%= message.body %>
+                      <div class = "mesage-info__date">
+                        ${message.created_at}.strftime("%Y/%m/%d %H:%M")
                       </div>
-                    </div>  
-                  `
+                    </div>
+                    <div class = "contents__body">
+                      <p class = "message_text"> ${message.body} </p>
+                    </div>
+                  </div>`
     }
     return html
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var url = $(this).attr('action');
+    console.log(this);
     $.ajax({
       url: url,  //同期通信でいう『パス』
       type: 'POST',  //同期通信でいう『HTTPメソッド』
@@ -53,7 +49,7 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.comments').append(html);
+      $('.chat-main__message-list').append(html);
       $('.textbox').val('');
       $('.form__submit').prop('disabled', false);
     })
