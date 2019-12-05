@@ -1,8 +1,7 @@
 $(function(){
   var buildHTML = function(message) {
-    if (message.body && message.image) {
-      //data-idが反映されるようにしている
-      var html = `<div class="message" data-message_id=` + message.id + `>` +
+    if (message.body && message.image.url) {
+      var html = `<div class="message" data-id=` + message.id + `>` +
         `<div class="message-info">` +
           `<div class="message-info__name">` +
             message.user_name +
@@ -15,12 +14,11 @@ $(function(){
           `<p class="lower-message__content">` +
             message.body +
           `</p>` +
-          `<img src="` + message.image + `" class="lower-message__image" >` +
+          `<img src="` + message.image.url + `" class="lower-message__image" >` +
         `</div>` +
       `</div>`
     } else if (message.body) {
-      //同様に、data-idが反映されるようにしている
-      var html = `<div class="message" data-message_id=` + message.id + `>` +
+      var html = `<div class="message" data-id=` + message.id + `>` +
         `<div class="message-info">` +
           `<div class="message-info__name">` +
             message.user_name +
@@ -35,9 +33,8 @@ $(function(){
           `</p>` +
         `</div>` +
       `</div>`
-    } else if (message.image) {
-      //同様に、data-idが反映されるようにしている
-      var html = `<div class="message" data-message_id=` + message.id + `>` +
+    } else if (message.image.url) {
+      var html = `<div class="message" data-id=` + message.id + `>` +
         `<div class="message-info">` +
           `<div class="message-info__name">` +
             message.user_name +
@@ -47,7 +44,7 @@ $(function(){
           `</div>` +
         `</div>` +
         `<div class="lower-message">` +
-          `<img src="` + message.image + `" class="lower-message__image" >` +
+          `<img src="` + message.image.url + `" class="lower-message__image" >` +
         `</div>` +
       `</div>`
     };
@@ -79,7 +76,7 @@ $(function(){
       $('.form-contents__send-btn').removeAttr('disabled');
     });
   })
-  
+
   var reloadMessages = function() {
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
     last_message_id = $('.message:last').data('id');
@@ -100,11 +97,16 @@ $(function(){
         insertHTML += buildHTML(message)
       });
       //メッセージが入ったHTMLに、入れ物ごと追加
-      $('.messages').append(insertHTML);
+      $('.chat-main__message-list').append(insertHTML);
+      $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
     })
     .fail(function() {
       console.log('error');
     });
   };
-  setInterval(reloadMessages, 7000);
+  var pathname = location.pathname.match(/messages/)
+  var reg = RegExp(pathname);
+  if(reg.test("messages")){
+    setInterval(reloadMessages, 7000);
+  }
 });
